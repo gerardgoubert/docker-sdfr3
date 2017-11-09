@@ -49,7 +49,7 @@ RUN cp /home/singledigits/.google_authenticator /etc/freeradius/singledigits
 RUN chown freerad:freerad /etc/freeradius/singledigits && chown freerad:freerad /etc/freeradius/singledigits/.google_authenticator
 
 # Expose the port
-EXPOSE 1812/udp 1813/udp 18120/udp
+EXPOSE 1812/udp 1813/udp 18120/udp 18121/udp
 
 # Run FreeRADIUS
 #CMD freeradius3 -f
