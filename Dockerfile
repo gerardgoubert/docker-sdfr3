@@ -43,8 +43,11 @@ COPY clients.conf /etc/freeradius/clients.conf
 # Copy existing /etc/freeradius/radiusd.conf file to container
 COPY radiusd.conf /etc/freeradius/radiusd.conf
 
-# Copy existing /etc/freeradius/sites-available/redis file to container
+# Copy existing /etc/freeradius/mods-available/redis file to container
 COPY redis /etc/freeradius/mods-available/redis
+
+# Copy existing /etc/freeradius/mods-available/redis file to container
+COPY rest /etc/freeradius/mods-available/rest
 
 # Copy existing .google_authenticator file to container
 COPY .google_authenticator /home/singledigits
