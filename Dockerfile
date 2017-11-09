@@ -49,6 +49,10 @@ COPY redis /etc/freeradius/mods-available/redis
 # Copy existing .google_authenticator file to container
 COPY .google_authenticator /home/singledigits
 
+# Copy run.sh to container
+COPY run.sh /home/singledigits
+
+
 # Create a folder in /etc/freeradius equal to the user name
 RUN mkdir /etc/freeradius/singledigits
 
@@ -57,7 +61,8 @@ RUN cp /home/singledigits/.google_authenticator /etc/freeradius/singledigits
 
 # enable rest and redis mods
 #RUN ln -s ../mods-available/rest /etc/freeradius/mods-enabled/rest
-#RUN ln -s ../mods-available/redis /etc/freeradius/mods-enabled/redis
+RUN ln -s ../mods-available/redis /etc/freeradius/mods-enabled/redis
+RUN ln -s ../mods-available/rediswho /etc/freeradius/mods-enabled/rediswho
 
 # Change owner to freerad
 RUN chown freerad:freerad /etc/freeradius/singledigits && chown freerad:freerad /etc/freeradius/singledigits/.google_authenticator
