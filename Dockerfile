@@ -53,4 +53,5 @@ EXPOSE 1812/udp 1813/udp 18120/udp 18121/udp
 
 # Run FreeRADIUS
 #CMD freeradius3 -f
-CMD ["/usr/sbin/freeradius", "-X"]
+#CMD ["/usr/sbin/freeradius", "-X"]
+CMD /usr/sbin/freeradius
