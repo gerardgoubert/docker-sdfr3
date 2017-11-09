@@ -36,6 +36,10 @@ COPY default /etc/freeradius/sites-enabled/default
 # Copy existing /etc/freeradius/clients.conf file to container
 COPY clients.conf /etc/freeradius/clients.conf
 
+# Copy existing /etc/freeradius/radiusd.conf file to container
+COPY radiusd.conf /etc/freeradius/radiusd.conf
+
+
 # Copy existing .google_authenticator file to container
 COPY .google_authenticator /home/singledigits
 
