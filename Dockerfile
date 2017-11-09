@@ -60,7 +60,7 @@ RUN mkdir /etc/freeradius/singledigits
 RUN cp /home/singledigits/.google_authenticator /etc/freeradius/singledigits
 
 # enable rest and redis mods
-#RUN ln -s ../mods-available/rest /etc/freeradius/mods-enabled/rest
+RUN ln -s ../mods-available/rest /etc/freeradius/mods-enabled/rest
 RUN ln -s ../mods-available/redis /etc/freeradius/mods-enabled/redis
 RUN ln -s ../mods-available/rediswho /etc/freeradius/mods-enabled/rediswho
 

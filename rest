@@ -20,6 +20,7 @@ rest {
 		#
 		#  The default is "yes"
 #		check_cert = yes
+		check_cert = no
 
 		#  Server certificate CN verification requirements.  Can be:
 		#    "no"  (don't even bother trying)
@@ -28,6 +29,7 @@ rest {
 		#
 		#  The default is "yes"
 #		check_cert_cn = yes
+		check_cert_cn = no
 	}
 
 	# rlm_rest will open a connection to the server specified in connect_uri
@@ -36,7 +38,7 @@ rest {
 	#
 	# If you wish to disable this pre-caching and reachability check,
 	# comment out the configuration item below.
-	connect_uri = "http://127.0.0.1/"
+#	connect_uri = "http://127.0.0.1/"
 
 	#
 	#  How long before new connection attempts timeout, defaults to 4.0 seconds.
