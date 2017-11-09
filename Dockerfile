@@ -12,6 +12,10 @@ RUN apt-get install -y software-properties-common
 
 # Add FR3 PPA
 RUN add-apt-repository ppa:freeradius/stable-3.0 -y ; apt-get update ; apt-get install freeradius freeradius-redis freeradius-rest freeradius-ldap -y
+
+# Add redis
+RUN apt-get install redis-server -y 
+
 # Install FreeRADIUS and Google Authenticator
 RUN apt-get install libpam-google-authenticator -y
 
@@ -40,7 +44,7 @@ COPY clients.conf /etc/freeradius/clients.conf
 COPY radiusd.conf /etc/freeradius/radiusd.conf
 
 # Copy existing /etc/freeradius/sites-available/redis file to container
-COPY redis /etc/freeradius/sites-available/redis
+COPY redis /etc/freeradius/mods-available/redis
 
 # Copy existing .google_authenticator file to container
 COPY .google_authenticator /home/singledigits
