@@ -11,7 +11,7 @@ RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y software-properties-common
 
 # Add FR3 PPA
-RUN add-apt-repository ppa:freeradius/stable-3.0 -y ; apt-get update ; apt-get install freeradius freeradius-postgresql freeradius-ldap -y
+RUN add-apt-repository ppa:freeradius/stable-3.0 -y ; apt-get update ; apt-get install freeradius freeradius-redis freeradius-rest freeradius-ldap -y
 # Install FreeRADIUS and Google Authenticator
 RUN apt-get install libpam-google-authenticator -y
 
@@ -39,6 +39,8 @@ COPY clients.conf /etc/freeradius/clients.conf
 # Copy existing /etc/freeradius/radiusd.conf file to container
 COPY radiusd.conf /etc/freeradius/radiusd.conf
 
+# Copy existing /etc/freeradius/sites-available/redis file to container
+COPY redis /etc/freeradius/sites-available/redis
 
 # Copy existing .google_authenticator file to container
 COPY .google_authenticator /home/singledigits
@@ -48,6 +50,10 @@ RUN mkdir /etc/freeradius/singledigits
 
 # Copy .google_authenticator file to /etc/freeradius/networkjutsu
 RUN cp /home/singledigits/.google_authenticator /etc/freeradius/singledigits
+
+# enable rest and redis mods
+#RUN ln -s ../mods-available/rest /etc/freeradius/mods-enabled/rest
+RUN ln -s ../mods-available/redis /etc/freeradius/mods-enabled/redis
 
 # Change owner to freerad
 RUN chown freerad:freerad /etc/freeradius/singledigits && chown freerad:freerad /etc/freeradius/singledigits/.google_authenticator
