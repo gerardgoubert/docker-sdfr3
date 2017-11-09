@@ -397,6 +397,13 @@ authorize {
 	#  raddb/mods-config/files/authorize
 	files
 
+	# try REST
+	if (User-Password) {
+        update control {
+            Auth-Type := rest
+            }
+        }
+
 	#
 	#  Look in an SQL database.  The schema of the database
 	#  is meant to mirror the "users" file.
@@ -526,6 +533,9 @@ authenticate {
 #	Auth-Type LDAP {
 #		ldap
 #	}
+
+	# Rest
+	rest
 
 	#
 	#  Allow EAP authentication.
