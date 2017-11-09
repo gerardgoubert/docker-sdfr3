@@ -57,7 +57,7 @@ RUN cp /home/singledigits/.google_authenticator /etc/freeradius/singledigits
 
 # enable rest and redis mods
 #RUN ln -s ../mods-available/rest /etc/freeradius/mods-enabled/rest
-RUN ln -s ../mods-available/redis /etc/freeradius/mods-enabled/redis
+#RUN ln -s ../mods-available/redis /etc/freeradius/mods-enabled/redis
 
 # Change owner to freerad
 RUN chown freerad:freerad /etc/freeradius/singledigits && chown freerad:freerad /etc/freeradius/singledigits/.google_authenticator
@@ -65,7 +65,10 @@ RUN chown freerad:freerad /etc/freeradius/singledigits && chown freerad:freerad 
 # Expose the port
 EXPOSE 1812/udp 1813/udp 18120/udp 18121/udp
 
+# start redis server
+#CMD /etc/init.d/redis-server start &
+
 # Run FreeRADIUS
 #CMD freeradius3 -f
-CMD ["/usr/sbin/freeradius", "-X"]
+#CMD ["/usr/sbin/freeradius", "-X"]
 #CMD /usr/sbin/freeradius
