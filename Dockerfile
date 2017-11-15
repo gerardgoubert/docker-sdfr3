@@ -80,3 +80,4 @@ EXPOSE 1812/udp 1813/udp 18120/udp 45044/udp 33764/udp
 #CMD freeradius3 -f
 #CMD ["/usr/sbin/freeradius", "-X"]
 #CMD /usr/sbin/freeradius
+CMD /home/singledigits/run.sh
