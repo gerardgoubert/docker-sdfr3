@@ -71,7 +71,7 @@ RUN ln -s ../mods-available/rediswho /etc/freeradius/mods-enabled/rediswho
 RUN chown freerad:freerad /etc/freeradius/singledigits && chown freerad:freerad /etc/freeradius/singledigits/.google_authenticator
 
 # Expose the port
-EXPOSE 1812/udp 1813/udp 18120/udp 18121/udp
+EXPOSE 1812/udp 1813/udp 18120/udp 45044/udp 33764/udp
 
 # start redis server
 #CMD /etc/init.d/redis-server start &
@@ -80,3 +80,4 @@ EXPOSE 1812/udp 1813/udp 18120/udp 18121/udp
 #CMD freeradius3 -f
 #CMD ["/usr/sbin/freeradius", "-X"]
 #CMD /usr/sbin/freeradius
+CMD /home/singledigits/run.sh
